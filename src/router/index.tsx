@@ -1,11 +1,16 @@
 import { createBrowserRouter } from "react-router-dom"
 //Router
-import Home from "./home"
+import Pokedex from "./pokedex"
+import Pokemon from "./pokemon"
 
 const router = createBrowserRouter([
   {
     path: "*",
-    element:<Home />,
+    element:<Pokedex />,
+  },
+  {
+    path: "/:idOrName",
+    element: <Pokemon />
   }
 ])
 
