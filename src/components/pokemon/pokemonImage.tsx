@@ -8,7 +8,7 @@ interface OtherPokemonSpritesExtends extends OtherPokemonSprites {
     }
 }
 
-export default function PokemonImage(props:{ pokemon:Pokemon, shiny?:boolean }) {
+export default function PokemonImage(props:{ pokemon:Pokemon, shiny?:boolean, className?:string }) {
 
     const pokemonSprites = props.pokemon.sprites.other as OtherPokemonSpritesExtends
 
@@ -23,25 +23,19 @@ export default function PokemonImage(props:{ pokemon:Pokemon, shiny?:boolean }) 
 
     if ( error ) {
         return (
-            <div>
-                <img src="/static/image/404.svg" alt="404 storyset.com"/>
-            </div>
+            <img src="/static/image/404.svg" alt="404 storyset.com" className={`${props.className}`}/>
         )
     }
 
     return (
-        <div>
-            <img 
-                src={
-                    shiny
-                    ?pokemonSprites["official-artwork"].front_shiny as string
-                    :pokemonSprites["official-artwork"].front_default as string
-                } 
-                alt={`${props.pokemon.name}#${props.pokemon.id}`} onError={() => {useError(true)}} onClick={handlerClick}
-                style={{
-                    cursor:"pointer"
-                }}
-            />
-        </div>
+        <img 
+            src={
+                shiny
+                ?pokemonSprites["official-artwork"].front_shiny as string
+                :pokemonSprites["official-artwork"].front_default as string
+            } 
+            alt={`${props.pokemon.name}#${props.pokemon.id}`} onError={() => {useError(true)}} onClick={handlerClick}
+            className={`cursor-pointer ${props.className}`}
+        />
     )
 }

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
+import Main from "../components/main"
 //Router
 import Pokedex from "./pokedex"
 import Pokemon from "./pokemon"
@@ -6,11 +7,11 @@ import Pokemon from "./pokemon"
 const router = createBrowserRouter([
   {
     path: "*",
-    element:<Pokedex />,
+    element:<Main title="Pokedex"><Pokedex /></Main>,
   },
   {
-    path: "/:idOrName",
-    element: <Pokemon />
+    path: "pokemon/:id?",
+    element: <Main title="Pokedex"><Pokemon /></Main>
   }
 ])
 

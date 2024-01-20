@@ -32,6 +32,7 @@ export default function usePokemon(props:{idOrName:string | number | undefined }
         }
 
         useLoading(false)
+
     }
 
     return { pokemon , loading, error }
