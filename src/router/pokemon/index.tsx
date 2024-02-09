@@ -6,14 +6,27 @@ import { PokemonTypes } from "../../components/pokemon/pokemonType"
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 
+function pokemonID(id:string | undefined): string {
+
+    if (id == undefined) {
+        const pokemonID = localStorage.getItem("pokemonID")
+        return pokemonID == null?"1":pokemonID
+    }
+
+    var pokemonID = id == "0"?"1":id
+
+    return pokemonID
+}
+
 export default function Pokemon() {
 
     const history = useNavigate()
-    const { id } = useParams()
-    const [ idOrName, useIdOrName ] = useState<number | string>(id || Number(isNaN(Number(localStorage.getItem("pokemonId")))?1:localStorage.getItem("pokemonId")))
+    var { id } = useParams()
+    const [ idOrName, useIdOrName ] = useState<number | string>(pokemonID(id))
     const { error, loading, pokemon } = usePokemon({ idOrName:idOrName })
 
     useEffect(() => {
+
         if (window.location.pathname == "/pokemon") history(`/pokemon/${idOrName}`)
     }, [])
 
@@ -67,7 +80,7 @@ export default function Pokemon() {
         )
     }
 
-    localStorage.setItem("pokemonId", String(pokemon?.id))
+    localStorage.setItem("pokemonID", String(pokemon?.id))
     
     if (typeof(idOrName) == "string") useIdOrName(pokemon?.id as number)
 
