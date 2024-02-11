@@ -3,7 +3,7 @@ import PokemonImage from "../../components/pokemon/pokemonImage"
 import PokemonName from "../../components/pokemon/pokemonName"
 import usePokemon from "../../hook/usePokemon"
 import { PokemonTypes } from "../../components/pokemon/pokemonType"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import client from "../../pokenode"
 
@@ -66,7 +66,10 @@ export default function Pokemon() {
     if (error) {
 
         return (
-            <h1>Error</h1>
+            <div className="w-full h-full flex justify-center flex flex-wrap">
+                <img src="/static/image/404.svg" alt="404 storyset.com" className="w-[80%] max-w-[500px]"/>
+                <p className="font-righteous font-medium w-full text-center">Não tem pokemon aqui, <Link to={"/pokedex"} className="underline decoration-2">Pokedex</Link></p>
+            </div>
         )
     }
 

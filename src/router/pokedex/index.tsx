@@ -1,6 +1,7 @@
 import usePokemons from "../../hook/usePokemons"
 import { GetPokemonCard } from "../../components/pokemon/pokemonCard"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function Pokedex() {
 
@@ -10,7 +11,10 @@ export default function Pokedex() {
 
     if (error) {
         return (
-            <div>Error</div>
+            <div className="w-full h-full flex justify-center flex flex-wrap">
+                <img src="/static/image/404.svg" alt="404 storyset.com" className="w-[80%] max-w-[500px]"/>
+                <p className="font-righteous font-medium w-full text-center">Não tem pokemon aqui, <Link to={"/pokedex"} className="underline decoration-2">Pokedex</Link></p>
+            </div>
         )
     }
 
