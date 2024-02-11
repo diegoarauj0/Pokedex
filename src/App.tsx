@@ -6,7 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function App() {
   return (
-    <SkeletonTheme>
+    <SkeletonTheme baseColor="#EDECED" highlightColor="#FFFFFF">
       <RouterProvider router={router} />
     </SkeletonTheme>
   )

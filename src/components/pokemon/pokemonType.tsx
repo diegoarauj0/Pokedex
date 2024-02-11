@@ -39,7 +39,7 @@ export function PokemonTypes(props:{ types:pokenode.PokemonType[], className?:st
     return (
         <>
             {props.types.map((type) => (
-                <PokemonType type={type} className={props.className}/>
+                <PokemonType type={type} className={props.className} key={type.type.name}/>
             ))}
         </>
     )

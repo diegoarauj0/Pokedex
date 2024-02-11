@@ -1,7 +1,21 @@
-import { MainClient } from "pokenode-ts"
+import { MainClient, ClientArgs } from "pokenode-ts"
 
-const client = new MainClient({
-    
+interface clientProps extends ClientArgs {
+    limit:number
+}
+
+class Client extends MainClient {
+
+    public readonly limit?:number
+
+    constructor(props?:clientProps) {
+        super(props)
+        this.limit = props?.limit
+    }
+}
+
+const client = new Client({
+    limit:898
 })
 
 export default client

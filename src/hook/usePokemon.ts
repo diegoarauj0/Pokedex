@@ -22,8 +22,10 @@ export default function usePokemon(props:{idOrName:string | number | undefined }
             if (isNaN(Number(props.idOrName))) {
                 const idOrName = props.idOrName == undefined?"bulbasaur":props.idOrName as string
                 const pokemon = await client.pokemon.getPokemonByName(idOrName)
+                if (client.limit && pokemon.id > client.limit) throw ""
                 usePokemon(pokemon)
             } else {
+                if (client.limit && Number(props.idOrName) > client.limit) throw ""
                 const pokemon = await client.pokemon.getPokemonById(Number(props.idOrName))
                 usePokemon(pokemon)
             }

@@ -5,6 +5,7 @@ import usePokemon from "../../hook/usePokemon"
 import { PokemonTypes } from "../../components/pokemon/pokemonType"
 import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import client from "../../pokenode"
 
 function pokemonID(id:string | undefined): string {
 
@@ -57,12 +58,12 @@ export default function Pokemon() {
     
     function nextButton() {
         if (loading) return
-        if (idOrName as number >= 898) return
+        if (client.limit && idOrName as number >= client.limit) return
         useIdOrName(idOrName as number + 1)
         history(`/pokemon/${idOrName as number + 1}`)
     }
 
-    if (error || pokemon?.id as number > 898) {
+    if (error) {
 
         return (
             <h1>Error</h1>
