@@ -1,42 +1,85 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --ColorType_bug:#92BD2D;
+    --ColorType_dark:#595761;
+    --ColorType_dragon:#0C6AC8;
+    --ColorType_electric:#F2D94E;
+    --ColorType_fairy:#EF90E6;
+    --ColorType_fighting:#D3425F;
+    --ColorType_fire:#FBA64C;
+    --ColorType_flying:#A1BBEC;
+    --ColorType_ghost:#5F6DBC;
+    --ColorType_grass:#60BD58;
+    --ColorType_ground:#DB8154;
+    --ColorType_ice:#76D1C1;
+    --ColorType_normal:#606566;
+    --ColorType_poison:#B763CF;
+    --ColorType_psychic:#FA8582;
+    --ColorType_rock:#C9BC8A;
+    --ColorType_steel:#5795A3;
+    --ColorType_water:#539DDF;
+    --ChivoMono:'Chivo Mono', Arial, Helvetica, sans-serif;
+    --Righteous:'Righteous', Arial, Helvetica, sans-serif;
+    --MartianMono:'Martian Mono', Arial, Helvetica, sans-serif;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+.bg_bug {
+    background-color:#92BD2D;
+ }
+ .bg_dark {
+    background-color:#595761;
+ }
+ .bg_dragon {
+    background-color:#0C6AC8;
+ }
+ .bg_electric {
+    background-color:#F2D94E;
+ }
+ .bg_fairy {
+    background-color:#EF90E6;
+ }
+ .bg_fighting {
+    background-color:#D3425F;
+ }
+ .bg_fire {
+    background-color:#FBA64C;
+ }
+ .bg_flying {
+    background-color:#A1BBEC;
+ }
+ .bg_ghost {
+    background-color:#5F6DBC;
+ }
+ .bg_grass {
+    background-color:#60BD58;
+ }
+ .bg_ground {
+    background-color:#DB8154;
+ }
+ .bg_ice {
+    background-color:#76D1C1;
+ }
+ .bg_normal {
+    background-color:#606566;
+ }
+ .bg_poison {
+    background-color:#B763CF;
+ }
+ .bg_psychic {
+    background-color:#FA8582;
+ }
+ .bg_rock {
+    background-color:#C9BC8A;
+ }
+ .bg_steel {
+    background-color:#5795A3;
+ }
+ .bg_water {
+    background-color:#539DDF;
+ }
