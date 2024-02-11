@@ -7,4 +7,4 @@
   <img src="https://img.shields.io/badge/ReactJs-212121?style=for-the-badge&logo=react&logoColor=00D1F7" width="200">
  </div>
 
- <p align="center">Acesse o site por esse <a href="https://pokedex-livid-theta-34.vercel.app/pokedex" target="_black">link</a></p>
+ <p align="center">Acesse o site por esse <a href="https://pokedex-livid-theta-34.vercel.app" target="_black">link</a></p>
