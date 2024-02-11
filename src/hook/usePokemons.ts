@@ -4,7 +4,6 @@ import client from "../pokenode"
 
 function isValidJson(jsonString:string): boolean {
     try {
-        const json = JSON.parse(jsonString)
         return true
     } catch { return false }
 }
