@@ -65,6 +65,8 @@ export default function Pokemon() {
 
     if (error) {
 
+        document.title = `...`
+
         return (
             <div className="w-full h-full flex justify-center flex flex-wrap">
                 <img src="/static/image/404.svg" alt="404 storyset.com" className="w-[80%] max-w-[500px]"/>
@@ -74,6 +76,9 @@ export default function Pokemon() {
     }
 
     if (loading) {
+
+        document.title = `Carregando...`
+
         return (
             <div className="flex justify-center items-center w-full h-full">
                 <div className="flex justify-center items-center flex-wrap">
@@ -87,6 +92,11 @@ export default function Pokemon() {
     localStorage.setItem("pokemonID", String(pokemon?.id))
     
     if (typeof(idOrName) == "string") useIdOrName(pokemon?.id as number)
+
+    var pokemonName = pokemon?.name.split("")
+    pokemonName.shift()
+
+    document.title = `${pokemon?.name.toUpperCase()[0]+pokemonName.join("")}#${pokemon?.id}`
 
     return (
         <>

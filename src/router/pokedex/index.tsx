@@ -10,6 +10,9 @@ export default function Pokedex() {
     })
 
     if (error) {
+
+        document.title = `...`
+
         return (
             <div className="w-full h-full flex justify-center flex flex-wrap">
                 <img src="/static/image/404.svg" alt="404 storyset.com" className="w-[80%] max-w-[500px]"/>
@@ -42,6 +45,8 @@ export default function Pokedex() {
             next()
         }
     }
+
+    document.title = `Pokedex`
 
     return (
         <div className="flex flex-wrap justify-center items-center overflow-y-auto h-[calc(100vh-85px)]" onScroll={handleScroll} id="pokedex">
