@@ -19,7 +19,7 @@ const Translation: {[key:string]:string} = {
     rock: "Pedra",
     steel: "Metal",
     water: "Água"
-};
+}
 
 export function PokemonType(props:{ type:pokenode.PokemonType, className?:string }) {
     return (

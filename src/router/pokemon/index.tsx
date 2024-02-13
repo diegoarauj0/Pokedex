@@ -1,6 +1,7 @@
 import pokemon from "pokenode-ts"
 import PokemonImage from "../../components/pokemon/pokemonImage"
 import PokemonName from "../../components/pokemon/pokemonName"
+import PokemonStats from "../../components/pokemon/pokemonStats"
 import usePokemon from "../../hook/usePokemon"
 import { PokemonTypes } from "../../components/pokemon/pokemonType"
 import { useParams, useNavigate, Link } from "react-router-dom"
@@ -93,7 +94,7 @@ export default function Pokemon() {
     
     if (typeof(idOrName) == "string") useIdOrName(pokemon?.id as number)
 
-    var pokemonName = pokemon?.name.split("")
+    var pokemonName = pokemon?.name.split("") as string[]
     pokemonName.shift()
 
     document.title = `${pokemon?.name.toUpperCase()[0]+pokemonName.join("")}#${pokemon?.id}`
@@ -117,6 +118,12 @@ export default function Pokemon() {
                 <PokemonTypes types={pokemon?.types as pokemon.PokemonType[]} />
             </div>
 
+            <div className="flex w-full">
+                <div className="w-[600px] p-4 ml-4">
+                    <h2 className="font-righteous text-2xl m-2">Status Base</h2>
+                    <PokemonStats stats={pokemon?.stats as pokemon.PokemonStat[]} pokemon={pokemon as pokemon.Pokemon}/>
+                </div>
+            </div>
         </>
     )
 }
