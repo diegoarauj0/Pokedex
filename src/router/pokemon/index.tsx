@@ -1,12 +1,15 @@
 import pokemon from "pokenode-ts"
 import PokemonImage from "../../components/pokemon/pokemonImage"
 import PokemonName from "../../components/pokemon/pokemonName"
-import PokemonStats from "../../components/pokemon/pokemonStats"
+import PokemonStats from "../../components/pokemon/PokemonStats"
 import usePokemon from "../../hook/usePokemon"
 import { PokemonTypes } from "../../components/pokemon/pokemonType"
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import client from "../../pokenode"
+import NotFound from "../../components/notFound"
+import Loading from "../../components/loading"
+import Styled from "./styled"
 
 function pokemonID(id:string | undefined): string {
 
@@ -65,29 +68,11 @@ export default function Pokemon() {
     }
 
     if (error) {
-
-        document.title = `...`
-
-        return (
-            <div className="w-full h-full flex justify-center flex flex-wrap">
-                <img src="/static/image/404.svg" alt="404 storyset.com" className="w-[80%] max-w-[500px]"/>
-                <p className="font-righteous font-medium w-full text-center">Não tem pokemon aqui, <Link to={"/pokedex"} className="underline decoration-2">Pokedex</Link></p>
-            </div>
-        )
+        return <NotFound />
     }
 
     if (loading) {
-
-        document.title = `Carregando...`
-
-        return (
-            <div className="flex justify-center items-center w-full h-full">
-                <div className="flex justify-center items-center flex-wrap">
-                    <img src="/static/image/loading.gif" alt="" className="w-[270px]" />
-                    <h1 className="w-full text-center text-yellow-400 font-righteous text-2xl">Carregando...</h1>
-                </div>
-            </div>
-        )
+        return <Loading />
     }
 
     localStorage.setItem("pokemonID", String(pokemon?.id))
@@ -100,30 +85,36 @@ export default function Pokemon() {
     document.title = `${pokemon?.name.toUpperCase()[0]+pokemonName.join("")}#${pokemon?.id}`
 
     return (
-        <>
-            <div className={`rounded-b-[30%] flex justify-center`} style={{
-                background:pokemon?.types.length == 2?`linear-gradient(90deg, var(--ColorType_${pokemon?.types[0].type.name}) 0%, var(--ColorType_${pokemon?.types[1].type.name}) 100%)`:`var(--ColorType_${pokemon?.types[0].type.name})`
-            }}>
-                <PokemonImage pokemon={pokemon as pokemon.Pokemon} className="w-[50%] max-w-[350px] mb-[-7%]" key={pokemon?.name as string}/>
-            </div>
-            <div>
-                <PokemonName pokemon={pokemon as pokemon.Pokemon} id={true} className="mt-[calc(5px+7%)] text-center text-3xl" />
-            </div>
-            <div className="font-chivoMono flex text-sm p-1 justify-center my-[5px]">
-                <button className="previous-button bg-[#dddddd] rounded-md p-1 m-1 hover:scale-[1.1] duration-[0.5s] hover:duration-[0.5s]" onClick={previousButton}>Anterior</button>
-                <button className="next-button bg-[#dddddd] rounded-md p-1 m-1 hover:scale-[1.1] duration-[0.5s] hover:duration-[0.5s]" onClick={nextButton}>Proximo</button>
-            </div>
+        <Styled.Pokemon>
+            <Styled.PokemonImage pokemon={pokemon}>
+                <PokemonImage pokemon={pokemon as pokemon.Pokemon} key={pokemon?.name as string}/>
+            </Styled.PokemonImage>
+            <Styled.PokemonName>
+                <PokemonName pokemon={pokemon as pokemon.Pokemon} id={true} />
+            </Styled.PokemonName>
+            <Styled.Buttons>
+                <button onClick={previousButton}>Anterior</button>
+                <button onClick={nextButton}>Proximo</button>
+            </Styled.Buttons>
 
-            <div className="flex justify-center items-center">
+            <Styled.PokemonTypes>
                 <PokemonTypes types={pokemon?.types as pokemon.PokemonType[]} />
+            </Styled.PokemonTypes>
+
+            <div style={{
+                display:"flex",
+                justifyContent:"center",
+                padding: "15px 0px"
+            }}>
+                <Styled.PokemonStatsParent pokemon={pokemon}>
+                    <h2>Status Base</h2>
+                    <Styled.PokemonStats>
+                        <PokemonStats stats={pokemon?.stats as pokemon.PokemonStat[]} pokemon={pokemon as pokemon.Pokemon}/>
+                    </Styled.PokemonStats>
+                </Styled.PokemonStatsParent>
             </div>
 
-            <div className="flex w-full">
-                <div className="w-[600px] p-4 ml-4">
-                    <h2 className="font-righteous text-2xl m-2">Status Base</h2>
-                    <PokemonStats stats={pokemon?.stats as pokemon.PokemonStat[]} pokemon={pokemon as pokemon.Pokemon}/>
-                </div>
-            </div>
-        </>
+
+        </Styled.Pokemon>
     )
 }

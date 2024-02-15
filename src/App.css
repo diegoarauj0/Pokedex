@@ -1,29 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
-    --ColorType_bug:#92BD2D;
-    --ColorType_dark:#595761;
-    --ColorType_dragon:#0C6AC8;
-    --ColorType_electric:#F2D94E;
-    --ColorType_fairy:#EF90E6;
-    --ColorType_fighting:#D3425F;
-    --ColorType_fire:#FBA64C;
-    --ColorType_flying:#A1BBEC;
-    --ColorType_ghost:#5F6DBC;
-    --ColorType_grass:#60BD58;
-    --ColorType_ground:#DB8154;
-    --ColorType_ice:#76D1C1;
-    --ColorType_normal:#606566;
-    --ColorType_poison:#B763CF;
-    --ColorType_psychic:#FA8582;
-    --ColorType_rock:#C9BC8A;
-    --ColorType_steel:#5795A3;
-    --ColorType_water:#539DDF;
+    --color-bug:#92BD2D;
+    --color-dark:#595761;
+    --color-dragon:#0C6AC8;
+    --color-electric:#F2D94E;
+    --color-fairy:#EF90E6;
+    --color-fighting:#D3425F;
+    --color-fire:#FBA64C;
+    --color-flying:#A1BBEC;
+    --color-ghost:#5F6DBC;
+    --color-grass:#60BD58;
+    --color-ground:#DB8154;
+    --color-ice:#76D1C1;
+    --color-normal:#606566;
+    --color-poison:#B763CF;
+    --color-psychic:#FA8582;
+    --color-rock:#C9BC8A;
+    --color-steel:#5795A3;
+    --color-water:#539DDF;
     --ChivoMono:'Chivo Mono', Arial, Helvetica, sans-serif;
     --Righteous:'Righteous', Arial, Helvetica, sans-serif;
     --MartianMono:'Martian Mono', Arial, Helvetica, sans-serif;
@@ -82,4 +79,10 @@
  }
  .bg_water {
     background-color:#539DDF;
+ }
+
+ * {
+   margin: 0px;
+   padding: 0px;
+   box-sizing: border-box;
  }

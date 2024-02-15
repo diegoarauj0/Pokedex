@@ -1,4 +1,5 @@
 import pokenode from "pokenode-ts"
+import Styled from "./styled"
 
 const Translation: {[key:string]:string} = {
     bug: "Inseto",
@@ -21,25 +22,24 @@ const Translation: {[key:string]:string} = {
     water: "Água"
 }
 
-export function PokemonType(props:{ type:pokenode.PokemonType, className?:string }) {
+export function PokemonType(props:{ type:pokenode.PokemonType }) {
     return (
-        <div className={`bg_${props.type.type.name} flex flex-wrap justify-center items-center rounded-md px-2 text-white font-righteous m-2 ${props.className}`}>
+        <Styled.PokemonType bg={props.type.type.name}>
             <img 
                 src={`/static/image/types/${props.type.type.name}.svg`}
                 alt={props.type.type.name}
-                className="h-[60px] p-2 pl-0"
             />
             <p>{Translation[props.type.type.name] || props.type.type.name}</p>
-        </div>
+        </Styled.PokemonType >
     )
 }
 
-export function PokemonTypes(props:{ types:pokenode.PokemonType[], className?:string }) {
+export function PokemonTypes(props:{ types:pokenode.PokemonType[] }) {
 
     return (
         <>
             {props.types.map((type) => (
-                <PokemonType type={type} className={props.className} key={type.type.name}/>
+                <PokemonType type={type} key={type.type.name}/>
             ))}
         </>
     )
